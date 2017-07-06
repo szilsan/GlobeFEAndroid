@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("hello","bello");
-                new HttpRequestTask().execute();
+                new HttpRequestTaskGlobes().execute();
             }
         });
 
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        new HttpRequestTask().execute();
+        new HttpRequestTaskGreeting().execute();
     }
 
 }

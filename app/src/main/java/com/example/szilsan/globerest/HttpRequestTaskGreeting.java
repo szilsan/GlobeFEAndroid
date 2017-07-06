@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
  * Created by szilsan on 06/07/2017.
  */
 
-public class HttpRequestTask extends AsyncTask<Void, Void, Greeting> {
+public class HttpRequestTaskGreeting extends AsyncTask<Void, Void, Greeting> {
     @Override
     protected Greeting doInBackground(Void... params) {
         try {
