@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,16 +20,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("hello","bello");
-                new HttpRequestTaskGlobes().execute();
+                new HttpRequestTaskGlobes(MainActivity.this).execute();
             }
         });
+
+        //final WorkAreaView workAreaView = (WorkAreaView) findViewById(R.id.workAreaView);
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        new HttpRequestTaskGreeting().execute();
     }
 
 }

@@ -5,40 +5,40 @@ package com.example.szilsan.globerest.dto;
  */
 
 public class GlobeDTO {
-    private double x;
-    private double y;
-    private double z;
-    private double size;
+    private float x;
+    private float y;
+    private float z;
+    private float size;
 
-    public double getX() {
+    public float getX() {
         return x;
     }
 
-    public void setX(double x) {
+    public void setX(float x) {
         this.x = x;
     }
 
-    public double getY() {
+    public float getY() {
         return y;
     }
 
-    public void setY(double y) {
+    public void setY(float y) {
         this.y = y;
     }
 
-    public double getSize() {
+    public float getSize() {
         return size;
     }
 
-    public void setSize(double size) {
+    public void setSize(float size) {
         this.size = size;
     }
 
-    public double getZ() {
+    public float getZ() {
         return z;
     }
 
-    public void setZ(double z) {
+    public void setZ(float z) {
         this.z = z;
     }
 }

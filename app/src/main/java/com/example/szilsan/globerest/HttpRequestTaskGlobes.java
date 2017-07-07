@@ -1,8 +1,11 @@
 package com.example.szilsan.globerest;
 
 import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 
+import com.example.szilsan.globerest.dto.GlobeDTO;
 import com.example.szilsan.globerest.dto.Greeting;
 import com.example.szilsan.globerest.dto.PositionsDTO;
 
@@ -14,6 +17,13 @@ import org.springframework.web.client.RestTemplate;
  */
 
 public class HttpRequestTaskGlobes extends AsyncTask<Void, Void, PositionsDTO> {
+
+    AppCompatActivity activity;
+
+    public HttpRequestTaskGlobes(AppCompatActivity activity) {
+        this.activity = activity;
+    }
+
     @Override
     protected PositionsDTO doInBackground(Void... params) {
         try {
@@ -32,14 +42,19 @@ public class HttpRequestTaskGlobes extends AsyncTask<Void, Void, PositionsDTO> {
 
     @Override
     protected void onPostExecute(PositionsDTO positionsDTO) {
-        /*
-        TextView greetingIdText = (TextView) findViewById(R.id.id_value);
-        TextView greetingContentText = (TextView) findViewById(R.id.content_value);
-        greetingIdText.setText(greeting.getId());
-        greetingContentText.setText(greeting.getContent());
-        */
+
         if (positionsDTO != null && !positionsDTO.getPositions().isEmpty()) {
-            Log.d("Size:", positionsDTO.getPositions().size() + "");
+            String text = "Size: " + positionsDTO.getPositions().size() + "\n";
+            if (positionsDTO.getPositions().size() > 0) {
+                for (GlobeDTO gdto: positionsDTO.getPositions()) {
+                    text = text + gdto.getSize() + "\n";
+                }
+            }
+            Log.d("Valid response. Size:", positionsDTO.getPositions().size() + "");
+            ((WorkAreaView)activity.findViewById(R.id.workAreaView)).setPositionsDTO(positionsDTO);
+            activity.findViewById(R.id.workAreaView).invalidate();
+        } else {
+            Log.d("Invalid response", "");
         }
     }
 }
